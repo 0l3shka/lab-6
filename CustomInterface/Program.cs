@@ -10,13 +10,21 @@ namespace CustomInterface
     {
         static void Main(string[] args)
         {
-            Hexagon hex2 = new Hexagon("Peter");
-            IPointy itfPt2 = hex2 as IPointy;
+            Console.WriteLine("***** Fun with Interfaces ******\n");
 
-            if (itfPt2 != null)
-                Console.WriteLine("Points: {0}", itfPt2.Points);
-            else
-                Console.WriteLine("OOPS! Not pointy...");
+            Shape[] myShapes = {new Hexagon(), new Circle(), new Triangle("Joe"),
+            new Circle("JoJo")};
+
+            for(int i=0;i<myShapes.Length;i++)
+            {
+                myShapes[i].Draw();
+                if (myShapes[i] is IPointy)
+                    Console.WriteLine("-> Points: {0}", ((IPointy)myShapes[i]).Points);
+                else
+                    Console.WriteLine("-> {0}\'s not pointy!", myShapes[i].PetName);
+                Console.WriteLine();
+
+            }
 
             Console.ReadLine();
         }
