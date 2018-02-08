@@ -8,6 +8,11 @@ namespace CustomInterface
 {
     class Program
     {
+        static void DrawIn3D(IDraw3D itf3d)
+        {
+            Console.WriteLine("-> Drawing IDraw3D compatible type");
+            itf3d.Draw3D();
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("***** Fun with Interfaces ******\n");
@@ -23,6 +28,9 @@ namespace CustomInterface
                 else
                     Console.WriteLine("-> {0}\'s not pointy!", myShapes[i].PetName);
                 Console.WriteLine();
+
+                if (myShapes[i] is IDraw3D)
+                    DrawIn3D((IDraw3D)myShapes[i]);
 
             }
 
