@@ -8,9 +8,19 @@ namespace InterFaceNameClash
 {
     class Octagon: IDrawToForm, IDrawToMemory, IDrawToPrinter
     {
-        public void Draw()
+        void IDrawToForm.Draw()
         {
-            Console.WriteLine("Drawing the Octagon...");
+            Console.WriteLine("Drawing to Form...");
+        }
+
+        void IDrawToMemory.Draw()
+        {
+            Console.WriteLine("Drawing to Memory...");
+        }
+
+        void IDrawToPrinter.Draw()
+        {
+            Console.WriteLine("Drawing to a Printer...");
         }
     }
     class Program
@@ -23,11 +33,10 @@ namespace InterFaceNameClash
             IDrawToForm itfForm = (IDrawToForm)oct;
             itfForm.Draw();
 
-            IDrawToPrinter itfPrinter = (IDrawToPrinter)oct;
-            itfPrinter.Draw();
+            ((IDrawToPrinter)oct).Draw();
 
-            IDrawToMemory itfMemory = (IDrawToMemory)oct;
-            itfMemory.Draw();
+            if (oct is IDrawToMemory)
+                ((IDrawToMemory)oct).Draw();
 
             Console.ReadLine();
 
