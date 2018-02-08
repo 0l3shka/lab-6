@@ -15,6 +15,7 @@ namespace CustomInterface
 
         public abstract void Draw();
         
+        
     }
 
     class Circle : Shape
