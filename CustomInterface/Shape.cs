@@ -35,6 +35,28 @@ namespace CustomInterface
         {
             Console.WriteLine("Drawing {0} the Gexagon", PetName);
         }
+
+        public byte Points
+        {
+            get { return 6; }
+        }
     }
+
+    class Triangle : Shape, IPointy
+    {
+        public Triangle() { }
+        public Triangle(string name) : base(name) { }
+        public override void Draw()
+        {
+            Console.WriteLine("Drawing {0} the Triangle", PetName);
+        }
+
+        public byte Points
+        {
+            get { return 3; }
+        }
+    }
+
+
     
 }
