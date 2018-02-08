@@ -10,6 +10,18 @@ namespace CustomInterface
     {
         static void Main(string[] args)
         {
+            Circle c = new Circle("Lisa");
+            IPointy itfPt = null;
+            try
+            {
+                itfPt = (IPointy)c;
+                Console.WriteLine(itfPt.Points);
+            }
+            catch (InvalidCastException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Console.ReadLine();
         }
     }
 }
